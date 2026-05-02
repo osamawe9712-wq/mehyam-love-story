@@ -56,6 +56,7 @@ const Contact = () => {
               href={whatsappLink}
               target="_blank"
               rel="noreferrer"
+              onClick={() => trackEvent("whatsapp_click", { source: "contact_page" })}
               className="flex items-center justify-center gap-3 w-full px-6 py-4 rounded-full bg-gradient-gold text-espresso font-bold shadow-gold hover:scale-[1.02] transition-transform duration-500"
             >
               <MessageCircle className="h-5 w-5" />
