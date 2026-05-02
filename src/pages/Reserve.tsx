@@ -15,8 +15,7 @@ import { cn } from "@/lib/utils";
 import hotImg from "@/assets/menu-hot.jpg";
 import coldImg from "@/assets/menu-cold.jpg";
 import dessertImg from "@/assets/menu-dessert.jpg";
-
-const WHATSAPP_NUMBER = "966577549712";
+import { useSiteSettings } from "@/hooks/useSiteSettings";
 
 // المنتجات القابلة للطلب المسبق (مأخوذة من القائمة)
 type Product = { id: string; name: string; price: number; cat: string; img: string };
@@ -55,6 +54,7 @@ const orderSchema = z.object({
 });
 
 const PreOrder = () => {
+  const { settings } = useSiteSettings();
   const [cart, setCart] = useState<CartItem[]>([]);
   const [form, setForm] = useState({
     name: "", phone: "", method: "pickup" as "pickup" | "delivery",
@@ -132,7 +132,7 @@ const PreOrder = () => {
       (d.notes ? `📝 ${d.notes}\n` : "") +
       `\nأرجو تأكيد الطلب، شكرًا لكم.`;
 
-    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
+    const url = `https://wa.me/${settings.whatsapp_number || "966577549712"}?text=${encodeURIComponent(msg)}`;
     window.open(url, "_blank", "noopener,noreferrer");
     toast.success("تم تجهيز طلبك عبر واتساب 🤎");
   };

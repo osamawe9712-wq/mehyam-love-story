@@ -2,10 +2,11 @@ import { useState } from "react";
 import { Layout } from "@/components/site/Layout";
 import { SectionTitle } from "@/components/site/SectionTitle";
 import { MapPin, Phone, Mail, Clock, MessageCircle } from "lucide-react";
-import { WHATSAPP_LINK } from "@/lib/whatsapp";
+import { useSiteSettings } from "@/hooks/useSiteSettings";
 import { toast } from "sonner";
 
 const Contact = () => {
+  const { settings, whatsappLink } = useSiteSettings();
   const [form, setForm] = useState({ name: "", email: "", message: "" });
 
   const onSubmit = (e: React.FormEvent) => {
@@ -33,10 +34,10 @@ const Contact = () => {
           {/* Info */}
           <div className="space-y-6 reveal">
             {[
-              { Icon: MapPin, t: "العنوان", v: "حي العليا، الرياض، المملكة العربية السعودية" },
-              { Icon: Phone, t: "اتصل بنا", v: "+966 50 000 0000" },
-              { Icon: Mail, t: "البريد الإلكتروني", v: "hello@mohayam.coffee" },
-              { Icon: Clock, t: "ساعات العمل", v: "يوميًا من ٧ صباحًا حتى ١٢ منتصف الليل" },
+              { Icon: MapPin, t: "العنوان", v: settings.address },
+              { Icon: Phone, t: "اتصل بنا", v: settings.phone },
+              { Icon: Mail, t: "البريد الإلكتروني", v: settings.email },
+              { Icon: Clock, t: "ساعات العمل", v: settings.working_hours },
             ].map(({ Icon, t, v }) => (
               <div key={t} className="flex items-start gap-4 p-5 rounded-xl bg-card shadow-soft hover-lift">
                 <div className="h-12 w-12 grid place-items-center rounded-full bg-gradient-gold shrink-0 shadow-gold">
@@ -50,7 +51,7 @@ const Contact = () => {
             ))}
 
             <a
-              href={WHATSAPP_LINK}
+              href={whatsappLink}
               target="_blank"
               rel="noreferrer"
               className="flex items-center justify-center gap-3 w-full px-6 py-4 rounded-full bg-gradient-gold text-espresso font-bold shadow-gold hover:scale-[1.02] transition-transform duration-500"
