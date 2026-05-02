@@ -180,10 +180,10 @@ const Home = () => {
               احجز طاولتك أو اطلب توصيلًا، ودَع قهوتنا تُحدّثك.
             </p>
             <Link
-              to="/contact"
+              to="/reserve"
               className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-espresso text-cream font-bold hover:scale-105 transition-transform duration-500"
             >
-              تواصل معنا
+              احجز طاولتك الآن
             </Link>
           </div>
         </div>
