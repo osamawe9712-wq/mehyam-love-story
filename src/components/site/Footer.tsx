@@ -34,7 +34,7 @@ export const Footer = () => (
           {[
             { Icon: Instagram, href: "#", label: "انستغرام" },
             { Icon: Twitter, href: "#", label: "تويتر" },
-            { Icon: MessageCircle, href: "https://wa.me/966577549712", label: "واتساب" },
+            { Icon: MessageCircle, href: `https://wa.me/966577549712?text=${encodeURIComponent("مرحبًا مهيام ☕\nأرغب بالاستفسار عن قائمتكم وخدماتكم.")}`, label: "واتساب" },
           ].map(({ Icon, href, label }) => (
             <a
               key={label}
