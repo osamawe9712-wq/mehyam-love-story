@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Instagram, Twitter, MessageCircle } from "lucide-react";
 import logo from "@/assets/logo.png";
+import { WHATSAPP_LINK } from "@/lib/whatsapp";
 
 export const Footer = () => (
   <footer className="bg-gradient-dark text-cream/80 mt-24">
@@ -34,7 +35,7 @@ export const Footer = () => (
           {[
             { Icon: Instagram, href: "#", label: "انستغرام" },
             { Icon: Twitter, href: "#", label: "تويتر" },
-            { Icon: MessageCircle, href: `https://wa.me/966577549712?text=${encodeURIComponent("مرحبًا مهيام ☕\nأرغب بالاستفسار عن قائمتكم وخدماتكم.")}`, label: "واتساب" },
+            { Icon: MessageCircle, href: WHATSAPP_LINK, label: "واتساب" },
           ].map(({ Icon, href, label }) => (
             <a
               key={label}

@@ -1,8 +1,5 @@
 import { MessageCircle } from "lucide-react";
-
-const WHATSAPP_NUMBER = "966577549712";
-const WELCOME_MESSAGE = "مرحبًا مهيام ☕\nأرغب بالاستفسار عن قائمتكم وخدماتكم.";
-const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WELCOME_MESSAGE)}`;
+import { WHATSAPP_LINK } from "@/lib/whatsapp";
 
 export const WhatsAppFab = () => (
   <a
