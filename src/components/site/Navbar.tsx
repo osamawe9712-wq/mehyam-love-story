@@ -102,14 +102,13 @@ export const Navbar = () => {
               {l.label}
             </NavLink>
           ))}
-          <a
-            href="https://wa.me/966500000000"
-            target="_blank"
-            rel="noreferrer"
+          <Link
+            to="/reserve"
+            onClick={() => setOpen(false)}
             className="mt-2 inline-flex justify-center items-center px-5 py-3 rounded-full bg-gradient-gold text-espresso font-semibold"
           >
-            اطلب الآن عبر واتساب
-          </a>
+            احجز طاولة
+          </Link>
         </nav>
       </div>
     </header>
