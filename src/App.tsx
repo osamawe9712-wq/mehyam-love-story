@@ -9,6 +9,9 @@ import About from "./pages/About.tsx";
 import Contact from "./pages/Contact.tsx";
 import Reserve from "./pages/Reserve.tsx";
 import NotFound from "./pages/NotFound.tsx";
+import AdminLogin from "./pages/admin/Login.tsx";
+import Admin from "./pages/admin/Admin.tsx";
+import { AdminGuard } from "./components/admin/AdminGuard.tsx";
 
 const queryClient = new QueryClient();
 
@@ -24,6 +27,8 @@ const App = () => (
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/reserve" element={<Reserve />} />
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/admin" element={<AdminGuard><Admin /></AdminGuard>} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
