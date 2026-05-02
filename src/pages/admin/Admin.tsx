@@ -2,12 +2,15 @@ import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
-import { LogOut, Coffee, Settings, FileText, Users } from "lucide-react";
+import { LogOut, Coffee, Settings, FileText, Users, BarChart3, Clock, Wallet } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 import { ProductsManager } from "@/components/admin/ProductsManager";
 import { SettingsManager } from "@/components/admin/SettingsManager";
 import { ContentManager } from "@/components/admin/ContentManager";
 import { UsersManager } from "@/components/admin/UsersManager";
+import { AttendanceManager } from "@/components/admin/AttendanceManager";
+import { FinancialManager } from "@/components/admin/FinancialManager";
+import { AnalyticsDashboard } from "@/components/admin/AnalyticsDashboard";
 import logo from "@/assets/logo.png";
 
 const Admin = () => {
@@ -41,8 +44,17 @@ const Admin = () => {
       </header>
 
       <main className="container py-6">
-        <Tabs defaultValue="products">
-          <TabsList className="grid grid-cols-2 sm:grid-cols-4 w-full mb-6">
+        <Tabs defaultValue="analytics">
+          <TabsList className="grid grid-cols-4 lg:grid-cols-7 w-full mb-6 h-auto">
+            <TabsTrigger value="analytics" disabled={!isAdmin}>
+              <BarChart3 className="h-4 w-4 ml-2" />التحليلات
+            </TabsTrigger>
+            <TabsTrigger value="attendance">
+              <Clock className="h-4 w-4 ml-2" />الحضور
+            </TabsTrigger>
+            <TabsTrigger value="financial" disabled={!isAdmin}>
+              <Wallet className="h-4 w-4 ml-2" />المالية
+            </TabsTrigger>
             <TabsTrigger value="products"><Coffee className="h-4 w-4 ml-2" />المنتجات</TabsTrigger>
             <TabsTrigger value="settings"><Settings className="h-4 w-4 ml-2" />الإعدادات</TabsTrigger>
             <TabsTrigger value="content"><FileText className="h-4 w-4 ml-2" />المحتوى</TabsTrigger>
@@ -50,6 +62,13 @@ const Admin = () => {
               <Users className="h-4 w-4 ml-2" />المستخدمون
             </TabsTrigger>
           </TabsList>
+          <TabsContent value="analytics">
+            {isAdmin ? <AnalyticsDashboard /> : <p className="text-center text-muted-foreground py-12">للمسؤولين فقط 👑</p>}
+          </TabsContent>
+          <TabsContent value="attendance"><AttendanceManager /></TabsContent>
+          <TabsContent value="financial">
+            {isAdmin ? <FinancialManager /> : <p className="text-center text-muted-foreground py-12">للمسؤولين فقط 👑</p>}
+          </TabsContent>
           <TabsContent value="products"><ProductsManager /></TabsContent>
           <TabsContent value="settings"><SettingsManager /></TabsContent>
           <TabsContent value="content"><ContentManager /></TabsContent>

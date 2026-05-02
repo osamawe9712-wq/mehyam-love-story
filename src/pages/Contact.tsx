@@ -4,6 +4,7 @@ import { SectionTitle } from "@/components/site/SectionTitle";
 import { MapPin, Phone, Mail, Clock, MessageCircle } from "lucide-react";
 import { useSiteSettings } from "@/hooks/useSiteSettings";
 import { toast } from "sonner";
+import { trackEvent } from "@/lib/analytics";
 
 const Contact = () => {
   const { settings, whatsappLink } = useSiteSettings();
@@ -11,6 +12,7 @@ const Contact = () => {
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    trackEvent("contact_form_submit", { name: form.name, email: form.email });
     toast.success("شكرًا لتواصلك مع مهيام، سنردّ عليك قريبًا 🤎");
     setForm({ name: "", email: "", message: "" });
   };
@@ -54,6 +56,7 @@ const Contact = () => {
               href={whatsappLink}
               target="_blank"
               rel="noreferrer"
+              onClick={() => trackEvent("whatsapp_click", { source: "contact_page" })}
               className="flex items-center justify-center gap-3 w-full px-6 py-4 rounded-full bg-gradient-gold text-espresso font-bold shadow-gold hover:scale-[1.02] transition-transform duration-500"
             >
               <MessageCircle className="h-5 w-5" />
