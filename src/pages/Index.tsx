@@ -7,14 +7,22 @@ import aboutImg from "@/assets/about-coffee.jpg";
 import hotImg from "@/assets/menu-hot.jpg";
 import coldImg from "@/assets/menu-cold.jpg";
 import dessertImg from "@/assets/menu-dessert.jpg";
+import { useSiteContent } from "@/hooks/useSiteContent";
 
 const Home = () => {
+  const { get } = useSiteContent();
+  const heroBg = get("home", "hero_image") || heroImg;
+  const heroDesc = get(
+    "home",
+    "hero_description",
+    "في كل فنجان حكاية، وفي كل رشفة شغف. مرحبًا بك في عالمٍ تُحاك فيه اللحظات بنكهة الحب."
+  );
   return (
     <Layout>
       {/* HERO */}
       <section className="relative min-h-[100svh] flex items-center overflow-hidden">
         <img
-          src={heroImg}
+          src={heroBg}
           alt="فنجان قهوة دافئ في أجواء رومانسية"
           width={1920}
           height={1280}
@@ -23,14 +31,14 @@ const Home = () => {
         <div className="absolute inset-0 bg-gradient-hero" />
         <div className="container relative z-10 text-center text-cream py-32">
           <span className="inline-block text-gold-soft tracking-[0.4em] text-xs md:text-sm mb-6 animate-fade-in">
-            ✦ مهيام ✦
+            ✦ {get("home", "hero_title", "مهيام")} ✦
           </span>
           <h1 className="font-display text-5xl md:text-7xl lg:text-8xl leading-tight mb-6 animate-fade-in-slow">
             حيث القهوة <br />
-            <span className="text-gradient-gold italic">قصة عشق</span>
+            <span className="text-gradient-gold italic">{get("home", "hero_subtitle", "قصة عشق").replace("حيث القهوة ", "")}</span>
           </h1>
           <p className="max-w-xl mx-auto text-cream/85 text-lg md:text-xl leading-loose mb-10 animate-fade-in" style={{ animationDelay: "0.3s" }}>
-            في كل فنجان حكاية، وفي كل رشفة شغف. مرحبًا بك في عالمٍ تُحاك فيه اللحظات بنكهة الحب.
+            {heroDesc}
           </p>
           <div className="flex flex-wrap justify-center gap-4 animate-fade-in" style={{ animationDelay: "0.6s" }}>
             <Link
