@@ -15,8 +15,7 @@ import { cn } from "@/lib/utils";
 import hotImg from "@/assets/menu-hot.jpg";
 import coldImg from "@/assets/menu-cold.jpg";
 import dessertImg from "@/assets/menu-dessert.jpg";
-
-const WHATSAPP_NUMBER = "966577549712";
+import { useSiteSettings } from "@/hooks/useSiteSettings";
 
 // المنتجات القابلة للطلب المسبق (مأخوذة من القائمة)
 type Product = { id: string; name: string; price: number; cat: string; img: string };
