@@ -8,6 +8,7 @@ const links = [
   { to: "/", label: "الرئيسية" },
   { to: "/menu", label: "القائمة" },
   { to: "/about", label: "عن مهيام" },
+  { to: "/reserve", label: "احجز طاولة" },
   { to: "/contact", label: "تواصل معنا" },
 ];
 
@@ -61,14 +62,12 @@ export const Navbar = () => {
           ))}
         </nav>
 
-        <a
-          href="https://wa.me/966500000000"
-          target="_blank"
-          rel="noreferrer"
+        <Link
+          to="/reserve"
           className="hidden md:inline-flex items-center px-5 py-2.5 rounded-full bg-gradient-gold text-espresso font-semibold text-sm shadow-gold hover:shadow-elegant transition-all duration-500 hover:scale-105"
         >
-          اطلب الآن
-        </a>
+          احجز طاولة
+        </Link>
 
         <button
           className={cn("md:hidden p-2", scrolled ? "text-primary" : "text-cream")}
