@@ -49,7 +49,7 @@ const Contact = () => {
             ))}
 
             <a
-              href="https://wa.me/966577549712"
+              href={`https://wa.me/966577549712?text=${encodeURIComponent("مرحبًا مهيام ☕\nأرغب بالاستفسار عن قائمتكم وخدماتكم.")}`}
               target="_blank"
               rel="noreferrer"
               className="flex items-center justify-center gap-3 w-full px-6 py-4 rounded-full bg-gradient-gold text-espresso font-bold shadow-gold hover:scale-[1.02] transition-transform duration-500"

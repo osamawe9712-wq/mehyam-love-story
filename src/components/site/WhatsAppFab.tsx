@@ -1,8 +1,12 @@
 import { MessageCircle } from "lucide-react";
 
+const WHATSAPP_NUMBER = "966577549712";
+const WELCOME_MESSAGE = "مرحبًا مهيام ☕\nأرغب بالاستفسار عن قائمتكم وخدماتكم.";
+const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WELCOME_MESSAGE)}`;
+
 export const WhatsAppFab = () => (
   <a
-    href="https://wa.me/966577549712"
+    href={WHATSAPP_LINK}
     target="_blank"
     rel="noreferrer"
     aria-label="تواصل عبر واتساب"
