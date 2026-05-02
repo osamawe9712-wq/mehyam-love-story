@@ -1,6 +1,4 @@
 # 🚀 نشر موقع Vite/React على GitHub Pages تلقائيًا
-# يعمل عند كل push على فرع main
-
 name: Deploy to GitHub Pages
 
 on:
@@ -24,18 +22,26 @@ jobs:
       - name: 📥 Checkout code
         uses: actions/checkout@v4
 
-      - name: 🍞 Setup Bun
-        uses: oven-sh/setup-bun@v2
+      - name: 🔍 Debug — list repo contents
+        run: |
+          echo "===== Working dir: $(pwd) ====="
+          ls -la
+          echo "===== package.json check ====="
+          test -f package.json && echo "✅ package.json found" || echo "❌ package.json MISSING"
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          bun-version: latest
+          node-version: "20"
+          cache: "npm"
 
       - name: 🔧 Install dependencies
-        run: bun install
+        run: npm ci || npm install
 
       - name: 🏗️ Build site
         env:
           GITHUB_REPOSITORY: ${{ github.repository }}
-        run: bun run build
+        run: npm run build
 
       - name: 📄 Add SPA 404 fallback
         run: cp dist/index.html dist/404.html
