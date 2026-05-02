@@ -8,7 +8,7 @@ const links = [
   { to: "/", label: "الرئيسية" },
   { to: "/menu", label: "القائمة" },
   { to: "/about", label: "عن مهيام" },
-  { to: "/reserve", label: "احجز طاولة" },
+  { to: "/reserve", label: "اطلب مسبقًا" },
   { to: "/contact", label: "تواصل معنا" },
 ];
 
@@ -66,7 +66,7 @@ export const Navbar = () => {
           to="/reserve"
           className="hidden md:inline-flex items-center px-5 py-2.5 rounded-full bg-gradient-gold text-espresso font-semibold text-sm shadow-gold hover:shadow-elegant transition-all duration-500 hover:scale-105"
         >
-          احجز طاولة
+          اطلب الآن
         </Link>
 
         <button
@@ -107,7 +107,7 @@ export const Navbar = () => {
             onClick={() => setOpen(false)}
             className="mt-2 inline-flex justify-center items-center px-5 py-3 rounded-full bg-gradient-gold text-espresso font-semibold"
           >
-            احجز طاولة
+            اطلب الآن
           </Link>
         </nav>
       </div>

@@ -183,7 +183,7 @@ const Home = () => {
               to="/reserve"
               className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-espresso text-cream font-bold hover:scale-105 transition-transform duration-500"
             >
-              احجز طاولتك الآن
+              اطلب مشروبك الآن
             </Link>
           </div>
         </div>
