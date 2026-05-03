@@ -1,9 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import { supabase } from "@/integrations/supabase/client";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
-import { LogOut, Coffee, Settings, FileText, Users, BarChart3, Clock, Wallet } from "lucide-react";
-import { useAuth } from "@/hooks/useAuth";
+import { Coffee, Settings, FileText, Users, BarChart3, Clock, Wallet } from "lucide-react";
 import { ProductsManager } from "@/components/admin/ProductsManager";
 import { SettingsManager } from "@/components/admin/SettingsManager";
 import { ContentManager } from "@/components/admin/ContentManager";
