@@ -15,12 +15,6 @@ import logo from "@/assets/logo.png";
 
 const Admin = () => {
   const navigate = useNavigate();
-  const { user, isAdmin } = useAuth();
-
-  const logout = async () => {
-    await supabase.auth.signOut();
-    navigate("/admin/login");
-  };
 
   return (
     <div className="min-h-screen bg-gradient-cream">
@@ -31,14 +25,11 @@ const Admin = () => {
             <img src={logo} alt="مهيام" className="h-10 w-10" />
             <div>
               <h1 className="font-display text-xl text-primary">لوحة تحكم مهيام</h1>
-              <p className="text-xs text-muted-foreground">{user?.email} {isAdmin && "👑"}</p>
+              <p className="text-xs text-muted-foreground">وصول مفتوح 👑</p>
             </div>
           </div>
           <div className="flex gap-2">
             <Button variant="outline" size="sm" onClick={() => navigate("/")}>عرض الموقع</Button>
-            <Button variant="ghost" size="sm" onClick={logout}>
-              <LogOut className="h-4 w-4 ml-2" /> خروج
-            </Button>
           </div>
         </div>
       </header>
@@ -46,35 +37,21 @@ const Admin = () => {
       <main className="container py-6">
         <Tabs defaultValue="analytics">
           <TabsList className="grid grid-cols-4 lg:grid-cols-7 w-full mb-6 h-auto">
-            <TabsTrigger value="analytics" disabled={!isAdmin}>
-              <BarChart3 className="h-4 w-4 ml-2" />التحليلات
-            </TabsTrigger>
-            <TabsTrigger value="attendance">
-              <Clock className="h-4 w-4 ml-2" />الحضور
-            </TabsTrigger>
-            <TabsTrigger value="financial" disabled={!isAdmin}>
-              <Wallet className="h-4 w-4 ml-2" />المالية
-            </TabsTrigger>
+            <TabsTrigger value="analytics"><BarChart3 className="h-4 w-4 ml-2" />التحليلات</TabsTrigger>
+            <TabsTrigger value="attendance"><Clock className="h-4 w-4 ml-2" />الحضور</TabsTrigger>
+            <TabsTrigger value="financial"><Wallet className="h-4 w-4 ml-2" />المالية</TabsTrigger>
             <TabsTrigger value="products"><Coffee className="h-4 w-4 ml-2" />المنتجات</TabsTrigger>
             <TabsTrigger value="settings"><Settings className="h-4 w-4 ml-2" />الإعدادات</TabsTrigger>
             <TabsTrigger value="content"><FileText className="h-4 w-4 ml-2" />المحتوى</TabsTrigger>
-            <TabsTrigger value="users" disabled={!isAdmin}>
-              <Users className="h-4 w-4 ml-2" />المستخدمون
-            </TabsTrigger>
+            <TabsTrigger value="users"><Users className="h-4 w-4 ml-2" />المستخدمون</TabsTrigger>
           </TabsList>
-          <TabsContent value="analytics">
-            {isAdmin ? <AnalyticsDashboard /> : <p className="text-center text-muted-foreground py-12">للمسؤولين فقط 👑</p>}
-          </TabsContent>
+          <TabsContent value="analytics"><AnalyticsDashboard /></TabsContent>
           <TabsContent value="attendance"><AttendanceManager /></TabsContent>
-          <TabsContent value="financial">
-            {isAdmin ? <FinancialManager /> : <p className="text-center text-muted-foreground py-12">للمسؤولين فقط 👑</p>}
-          </TabsContent>
+          <TabsContent value="financial"><FinancialManager /></TabsContent>
           <TabsContent value="products"><ProductsManager /></TabsContent>
           <TabsContent value="settings"><SettingsManager /></TabsContent>
           <TabsContent value="content"><ContentManager /></TabsContent>
-          <TabsContent value="users">
-            {isAdmin ? <UsersManager /> : <p className="text-center text-muted-foreground py-12">للمسؤولين فقط 👑</p>}
-          </TabsContent>
+          <TabsContent value="users"><UsersManager /></TabsContent>
         </Tabs>
       </main>
     </div>
